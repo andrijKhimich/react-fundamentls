@@ -1,26 +1,24 @@
 import React, {useState} from "react";
+import ClassCounter from "./Components/ClassCounter";
+import Counter from "./Components/Counter";
 
 const App = () => {
 
-  let count = 0;
 
-  const [number, setCount] = useState(count);
+  // live input
 
-  const incrementCount = () => {
-    setCount(number + 1);
-    console.log(number);
-  }
+  const [value, setValue] = useState("hello");
 
-  const decrementCount = () => {
-    setCount(number - 1);
-    console.log(number);
+  const changeInputValue = (event) => {
+    setValue(event.target.value);
   }
 
   return (
     <div className="App">
-      <button onClick={decrementCount}>-</button>
-      <p>{number}</p>
-      <button onClick={incrementCount}>+</button>
+      <Counter />
+      <ClassCounter/>
+      <p>{value}</p>
+      <input type="text" onChange={changeInputValue} value={value} />
     </div>
   );
 }

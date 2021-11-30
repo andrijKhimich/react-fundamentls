@@ -1,9 +1,26 @@
-import React from "react";
+import React, {useState} from "react";
 
-function App() {
+const App = () => {
+
+  let count = 0;
+
+  const [number, setCount] = useState(count);
+
+  const incrementCount = () => {
+    setCount(number + 1);
+    console.log(number);
+  }
+
+  const decrementCount = () => {
+    setCount(number - 1);
+    console.log(number);
+  }
+
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <button onClick={incrementCount}>-</button>
+      <p>{number}</p>
+      <button onClick={decrementCount}>+</button>
     </div>
   );
 }

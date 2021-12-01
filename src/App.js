@@ -1,24 +1,18 @@
 import React, {useState} from "react";
-import ClassCounter from "./Components/ClassCounter";
-import Counter from "./Components/Counter";
+// import ClassCounter from "./Components/ClassCounter";
+// import Counter from "./Components/Counter";
+// import LiveInput from "./Components/LiveInput";
 
 const App = () => {
 
 
-  // live input
-
-  const [value, setValue] = useState("hello");
-
-  const changeInputValue = (event) => {
-    setValue(event.target.value);
-  }
 
   return (
     <div className="App">
-      <Counter />
-      <ClassCounter/>
-      <p>{value}</p>
-      <input type="text" onChange={changeInputValue} value={value} />
+      {/* <Counter /> */}
+      {/* <ClassCounter/> */}
+      {/* <LiveInput/> */}
+
     </div>
   );
 }

@@ -1,22 +1,19 @@
-import React, {useState} from "react";
+import React from "react";
 import Post from "./Post/Posts";
 import "./PostList.scss";
-const PostList = () => {
 
-  const [postData] = useState([
-    { id: 1, title: "Hello", content: "Hello everybody" },
-    { id: 2, title: "Hello world", content: "Hello world" },
-    { id: 3, title: "Hello everybody", content: "Hello everybody" },
-  ]);
+const PostList = (props) => {
+  let post = props.post
 
-  let showPosts = postData.map(newPost => {
+  let showPosts = post.map((newPost, index) => {
     return (
-      <Post post={newPost} key={newPost.id} />
+      <Post post={newPost} key={newPost.id} number={index + 1} />
     )
   });
+
   return (
     <div className="postList">
-      <h2>Post list</h2>
+      <h2>{props.title}</h2>
       {showPosts}
     </div>
   )

@@ -2,7 +2,7 @@ import React from 'react';
 import "./Post.scss";
 
 const Post = (props) => {
-  
+  console.log(props);
   return (
     <div className="post">
       <h1><strong>{props.number}</strong>{props.post.title}</h1>

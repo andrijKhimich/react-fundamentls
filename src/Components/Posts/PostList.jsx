@@ -3,13 +3,15 @@ import Post from "./Post/Posts";
 import "./PostList.scss";
 
 const PostList = (props) => {
+  // console.log(props);
   let post = props.post
 
   let showPosts = post.map((newPost, index) => {
     return (
-      <Post post={newPost} key={newPost.id} number={index + 1} />
+      <Post remove={props.remove} post={newPost} key={newPost.id} number={index + 1} />
     )
   });
+
 
   return (
     <div className="postList">

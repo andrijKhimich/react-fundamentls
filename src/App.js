@@ -20,17 +20,26 @@ const App = () => {
   ]);
 
   const createPost = (newPost) => {
-    setPostData([...postData, newPost])
+    setPostData([newPost, ...postData])
   }
 
+  const removePost = (post) => {
+    // e.target.parentElement.remove();
+    // console.log(post);
+    setPostData(postData.filter(p => p.id !== post.id));
+  }
   return (
     <div className="App">
+      {postData.length !== 0 ?
+        <PostList remove={removePost} post={postData} />
+        : <h2>posts no found</h2>}
+
 
       {/* <Counter /> */}
       {/* <ClassCounter/> */}
       {/* <LiveInput/> */}
-      <PostForm create={createPost}/>
-      <PostList post={postData} title="Title 1" />
+      <PostForm create={createPost} remove={removePost} />
+
     </div>
   );
 }

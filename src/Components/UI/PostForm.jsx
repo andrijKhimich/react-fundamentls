@@ -4,8 +4,6 @@ import MyBtn from "./Button/Button";
 
 const PostForm = (props) => {
 
-
-
   const [post, setPost] = useState({
     title: "",
     content: "",
@@ -28,6 +26,7 @@ const PostForm = (props) => {
       title: "",
       content: "",
     });
+
   }
   return (
     <form action="#">

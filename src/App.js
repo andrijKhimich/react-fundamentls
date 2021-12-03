@@ -9,6 +9,7 @@ import PostList from "./Components/Posts/PostList";
 
 import "./App.scss"
 import PostForm from "./Components/UI/PostForm";
+import Select from "./Components/UI/Select/Select";
 
 
 const App = () => {
@@ -18,18 +19,44 @@ const App = () => {
     { id: 2, title: "Hello world", content: "Hello world" },
     { id: 3, title: "Hello everybody", content: "Hello everybody" },
   ]);
+  const [selectedSort, setSelectedSort] = useState("");
+
+  const sortPosts = (sort) => {
+    setSelectedSort(sort);
+    setPostData([...postData].sort((a, b) => a[sort].localeCompare(b[sort])));
+    console.log(sort);
+  }
 
   const createPost = (newPost) => {
     setPostData([newPost, ...postData])
   }
 
   const removePost = (post) => {
-    // e.target.parentElement.remove();
-    // console.log(post);
     setPostData(postData.filter(p => p.id !== post.id));
   }
+
   return (
     <div className="App">
+      <PostForm create={createPost} remove={removePost} />
+      <hr />
+
+      <Select defaultValue="Sort by"
+        value={selectedSort}
+        onChange={sortPosts}
+        options={
+          [
+            {
+              value: "title",
+              name: "By name"
+            },
+            {
+              value: "content",
+              name: "By description"
+            }
+          ]
+        }
+      />
+
       {postData.length !== 0 ?
         <PostList remove={removePost} post={postData} />
         : <h2>posts no found</h2>}
@@ -38,7 +65,6 @@ const App = () => {
       {/* <Counter /> */}
       {/* <ClassCounter/> */}
       {/* <LiveInput/> */}
-      <PostForm create={createPost} remove={removePost} />
 
     </div>
   );
